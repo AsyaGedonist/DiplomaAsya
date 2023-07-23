@@ -4,8 +4,10 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.Matchers.allOf;
 
@@ -31,10 +33,7 @@ public class AuthPage {
     public static void loadAuthPage() {
         onView(isRoot()).perform(Utils.waitDisplayed(loginField, 5000));
     }
-//    public static void loginIsFocused() {
-//        ViewInteraction textInputEditText = onView(withId(loginField));
-//        textInputEditText.check(matches(isChecked()));
-//    }
+
     public static void textInputCorrectLoginField(){
         onView(withId(loginField)).perform(click());
         onView(
@@ -48,6 +47,13 @@ public class AuthPage {
                 allOf(childAtPosition(childAtPosition(withId(passField),
                         0), 0)))
                 .perform(replaceText(Data.correctUser().getPassword()), closeSoftKeyboard());
+    }
+    public static void textInputInCorrectPassField(){
+        onView(withId(passField)).perform(click());
+        onView(
+                allOf(childAtPosition(childAtPosition(withId(passField),
+                        0), 0)))
+                .perform(replaceText(Data.inCorrectUser().getPassword()), closeSoftKeyboard());
     }
     public static void textInputCorrectBothAuth(){
         onView(withId(loginField)).perform(click());
@@ -65,6 +71,9 @@ public class AuthPage {
         onView(withId(signButton)).perform(click());
     }
 
+    public static void checkWrongLoginPass(){
+        onView(allOf(withText("Wrong login or password3"), isDisplayed()));
+    }
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
 

@@ -22,4 +22,7 @@ public class Data {
     public static User correctUser() {
         return new User("login2", "password2");
     }
+    public static User inCorrectUser() {
+        return new User("login3", "password3");
+    }
 }

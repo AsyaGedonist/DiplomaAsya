@@ -30,6 +30,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
+import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,17 +47,17 @@ public class AuthtorizationTests {
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
 
+    @After
+    public void SetOut(){
+        try {
+            MainPage.logOut();
+        } catch (Exception e) {
+        }
+    }
     @Test
     public void testCase1AuthIsDisplayed() {
         AuthPage.loadAuthPage();
     }
-
-//    @Test
-//    public void testCase2LoginIsHighlighted() {
-//        AuthPage.loadAuthPage();
-//        AuthPage.clickLoginField();
-//        AuthPage.loginIsFocused();
-//    }
 
     @Test
     public void testCase4SuccessfulAuth(){
@@ -65,5 +66,14 @@ public class AuthtorizationTests {
         AuthPage.pressSignButton();
         MainPage.loadMainPage();
     }
+    @Test
+    public void testCase6WrongPass(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputCorrectLoginField();
+        AuthPage.textInputInCorrectPassField();
+        AuthPage.pressSignButton();
+        AuthPage.checkWrongLoginPass();
+    }
 
+    
 }
