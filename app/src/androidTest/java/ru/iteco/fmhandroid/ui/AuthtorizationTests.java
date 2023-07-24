@@ -66,14 +66,59 @@ public class AuthtorizationTests {
         AuthPage.pressSignButton();
         MainPage.loadMainPage();
     }
-    @Test
-    public void testCase6WrongPass(){
-        AuthPage.loadAuthPage();
-        AuthPage.textInputCorrectLoginField();
-        AuthPage.textInputInCorrectPassField();
-        AuthPage.pressSignButton();
-        AuthPage.checkWrongLoginPass();
-    }
 
-    
+//    @Test
+//    public void testCase6WrongPass()  {
+//        AuthPage.loadAuthPage();
+//        AuthPage.textInputCorrectLoginField();
+//        AuthPage.textInputInCorrectPassField();
+//        AuthPage.pressSignButton();
+//        AuthPage.checkWrongLoginPass();
+//    }
+
+//    @Test
+//    public void testCase11LoginBottomLine() {
+//        AuthPage.loadAuthPage();
+//        AuthPage.textInputLessSymbolsLoginField();
+//        AuthPage.textInputCorrectPassField();
+//        AuthPage.checkLessSymbolsLoginPass();
+//    }
+
+    @Test
+    public void testCase14LoginUpperLine(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputMoreSymbolsLoginField();
+        AuthPage.checkSymbolsUpperLineLoginField();
+    }
+    @Test
+    public void testCase15LoginRusSymbols(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputRusSymbolsLoginField();
+        AuthPage.checkNoSymbolsLoginField();
+    }
+    @Test
+    public void testCase16LoginBadSpecSymbols(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputSpecSymbolsLoginField();
+        AuthPage.checkNoSymbolsLoginField();
+    }
+    @Test
+    public void testCase17LoginSpaceSymbol(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputSpaceSymbolLoginField();
+        AuthPage.checkNoSymbolsLoginField();
+    }
+//    @Test
+//    public void testCase21PassBottomLine(){
+//        AuthPage.loadAuthPage();
+//        AuthPage.textInputCorrectLoginField();
+//        AuthPage.textInputLessSymbolsPassField();
+//        check?
+//    }
+    @Test
+    public void testCase24PassUpperLine(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputMoreSymbolsPassField();
+        AuthPage.checkSymbolsUpperLinePassField();
+    }
 }

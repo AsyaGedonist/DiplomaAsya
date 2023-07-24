@@ -19,6 +19,10 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 import java.util.concurrent.TimeoutException;
+import android.view.WindowManager;
+import androidx.test.espresso.Root;
+import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
 
 public class Utils {
     public static ViewAction waitDisplayed(final int viewId, final long millis) {
@@ -62,7 +66,7 @@ public class Utils {
         };
         return viewAction;
     }
-    private static Matcher<View> childAtPosition(
+    public static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
 
         return new TypeSafeMatcher<View>() {
