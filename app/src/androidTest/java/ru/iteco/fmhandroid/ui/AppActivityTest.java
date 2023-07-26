@@ -33,7 +33,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -73,32 +72,29 @@ public class AppActivityTest {
                         isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withId(R.id.main_menu_image_button), withContentDescription("Main menu"),
-                        childAtPosition(
-                                allOf(withId(R.id.container_custom_app_bar_include_on_fragment_main),
-                                        childAtPosition(
-                                                withClassName(is("android.widget.LinearLayout")),
-                                                0)),
-                                0),
-                        isDisplayed()));
-        appCompatImageButton.perform(click());
-
-        ViewInteraction materialTextView = onView(
-                allOf(withId(android.R.id.title), withText("About"),
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.add_new_claim_material_button), withContentDescription("Add new claim button"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(android.R.id.content),
+                                        withId(R.id.container_list_claim_include_on_fragment_main),
                                         0),
-                                0),
+                                2),
                         isDisplayed()));
-        materialTextView.perform(click());
+        materialButton2.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.about_company_info_label_text_view), withText("© I-Teco, 2022"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                allOf(withId(R.id.custom_app_bar_title_text_view), withText("Creating"),
+                        withParent(allOf(withId(R.id.container_custom_app_bar_include_on_fragment_create_edit_claim),
+                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
                         isDisplayed()));
-        textView.check(matches(withText("© I-Teco, 2022")));
+        textView.check(matches(withText("Creating")));
+
+        ViewInteraction textView2 = onView(
+                allOf(withId(R.id.custom_app_bar_sub_title_text_view), withText("Claims"),
+                        withParent(allOf(withId(R.id.container_custom_app_bar_include_on_fragment_create_edit_claim),
+                                withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
+                        isDisplayed()));
+        textView2.check(matches(withText("Claims")));
     }
 
     private static Matcher<View> childAtPosition(
