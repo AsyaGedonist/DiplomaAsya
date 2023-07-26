@@ -2,14 +2,18 @@ package ru.iteco.fmhandroid.ui;
 
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +27,13 @@ import androidx.test.filters.LargeTest;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -46,13 +52,43 @@ public class AppActivityTest2 {
                                         0),
                                 0),
                         isDisplayed()));
-        textInputEditText.perform(replaceText("123456789890"), closeSoftKeyboard());
+        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
 
-        ViewInteraction editText = onView(
-                allOf(withText("123456789890"),
-                        withParent(withParent(withId(R.id.login_text_input_layout))),
+        ViewInteraction textInputEditText2 = onView(
+                allOf(childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.password_text_input_layout),
+                                        0),
+                                0),
                         isDisplayed()));
-        editText.check(matches(withText("123456789890")));
+        textInputEditText2.perform(replaceText("password2"), closeSoftKeyboard());
+
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.enter_button), withText("Sign in"), withContentDescription("Save"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.RelativeLayout")),
+                                        1),
+                                2),
+                        isDisplayed()));
+        materialButton.perform(click());
+
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withId(R.id.our_mission_image_button), withContentDescription("Our Mission"),
+                        childAtPosition(
+                                allOf(withId(R.id.container_custom_app_bar_include_on_fragment_main),
+                                        childAtPosition(
+                                                withClassName(is("android.widget.LinearLayout")),
+                                                0)),
+                                6),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
+
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.our_mission_title_text_view), withText("Love is all"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                        isDisplayed()));
+        textView.check(matches(withText("Love is all")));
     }
 
     private static Matcher<View> childAtPosition(

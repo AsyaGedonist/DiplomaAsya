@@ -54,6 +54,7 @@ public class AuthPage {
 
 //    public static void checkWrongLoginPass(){}
 //    public static void checkLessSymbolsLoginPass(){}
+
     public static void checkSymbolsUpperLineLoginField(){
         ViewInteraction editText = onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -72,7 +73,6 @@ public class AuthPage {
                         0), 0)));
         editText.check(matches(withText("")));
     }
-
     public static void textInputCorrectBothAuth(){
         onView(withId(loginField)).perform(click());
         onView(
