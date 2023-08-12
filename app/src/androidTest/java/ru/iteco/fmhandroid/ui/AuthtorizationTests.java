@@ -27,15 +27,6 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AndroidJUnit4.class)
 public class AuthtorizationTests {
 
-    @Before
-    static void setUpAll() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
-    @AfterAll
-    static void tearDownAll() {
-
-    }
-
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
