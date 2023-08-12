@@ -1,3 +1,4 @@
+
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
@@ -7,6 +8,17 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.firebase.crashlytics'
+    id 'io.qameta.allure' version '2.9.6'
+}
+allure {
+    version = '2.16.1'
+    useJUnit5 {
+        version = '2.16.1'
+    }
+}
+
+repositories {
+    mavenCentral()
 }
 
 android {
@@ -50,6 +62,10 @@ android {
 dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha01'
     androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha01'
+    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
+    androidTestImplementation 'org.junit.jupiter:junit-jupiter'
+    androidTestImplementation 'org.junit.jupiter:junit-jupiter'
+    androidTestImplementation 'org.junit.jupiter:junit-jupiter'
     def retrofit_version = "2.9.0"
     def retrofit_gson_version = "2.9.0"
     def okhttp_logging_version = "4.9.2"

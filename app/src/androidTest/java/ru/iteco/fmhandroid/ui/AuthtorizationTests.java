@@ -13,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +26,15 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class AuthtorizationTests {
+
+    @Before
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+
+    }
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -91,7 +101,7 @@ public class AuthtorizationTests {
         AuthPage.textInputSpaceSymbolLoginField();
         AuthPage.checkNoSymbolsLoginField();
     }
-//    @Test
+    //    @Test
 //    public void testCase21PassBottomLine(){
 //        AuthPage.loadAuthPage();
 //        AuthPage.textInputCorrectLoginField();

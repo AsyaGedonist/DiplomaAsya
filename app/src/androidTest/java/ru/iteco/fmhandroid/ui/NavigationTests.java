@@ -44,7 +44,7 @@ public class NavigationTests {
         TapBarPage.tapBar();
         TapBarPage.tapClaims();
         ClaimPage.loadClaimPage();
-        ClaimPage.checkClaimsName();
+        ClaimPage.checkClaimsPage();
     }
 
     @Test
@@ -52,7 +52,7 @@ public class NavigationTests {
         TapBarPage.tapBar();
         TapBarPage.tapNews();
         NewsPage.loadNewsPage();
-        NewsPage.checkNewsName();
+        NewsPage.checkNamesPage();
     }
 
     @Test

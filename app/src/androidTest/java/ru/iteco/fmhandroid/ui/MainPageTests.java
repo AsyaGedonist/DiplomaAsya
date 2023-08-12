@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.pages.AuthPage;
 import ru.iteco.fmhandroid.pages.MainPage;
+import ru.iteco.fmhandroid.pages.NewClaimPage;
+import ru.iteco.fmhandroid.pages.NewNewsPage;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -19,7 +21,6 @@ public class MainPageTests {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-
     @Before
     public void setUp() {
         try {
@@ -31,14 +32,17 @@ public class MainPageTests {
             MainPage.loadMainPage();
         }
     }
-
     @Test
     public void testCase39AddClaimFromMain() {
         MainPage.addNewClaim();
+        NewClaimPage.loadNewClaimPage();
+        NewClaimPage.checkClaimsName();
     }
 
     @Test
     public void testCase38AddNewsFromMain() {
         MainPage.addNewsWithPosition();
+        NewNewsPage.loadNewNewsPage();
+        NewNewsPage.checkNewsName();
     }
 }

@@ -38,6 +38,21 @@ public class Data {
         }
     }
 
+    public static class News {
+        private String name;
+        private String description;
+        public News(String name, String description) {
+            this.name = name;
+            this.description = description;
+        }
+        public String getName() {
+            return name;
+        }
+        public String getDescription() {
+            return description;
+        }
+    }
+
     public static User correctUser() {
         return new User("login2", "password2");
     }
@@ -53,5 +68,8 @@ public class Data {
     }
     public static Login badLogin(){
         return new Login("Ая", ";#*()^/", " ");
+    }
+    public static News todayNews(){
+        return new News("Объявление0108", "0108");
     }
 }
