@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
@@ -27,10 +28,15 @@ import org.hamcrest.TypeSafeMatcher;
 import java.util.concurrent.TimeoutException;
 import android.view.WindowManager;
 import androidx.test.espresso.Root;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
+
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
+import org.junit.Rule;
 
 import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.AppActivity;
 
 public class Utils {
     public static ViewAction waitDisplayed(final int viewId, final long millis) {
@@ -93,4 +99,5 @@ public class Utils {
         };
 
     }
+
 }

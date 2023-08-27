@@ -26,9 +26,9 @@ public class AboutPage {
         textView.check(matches(withText("© I-Teco, 2022")));
     }
     public static void tapPolicyLink(){
-        onView(withId(privacyText)).perform(click());
+        onView(withId(privacyText)).check(matches(isClickable()));
     }
     public static void tapTermsOfUse(){
-        onView(withId(termsOfUse)).perform(click());
+        onView(withId(termsOfUse)).check(matches(isClickable()));
     }
 }

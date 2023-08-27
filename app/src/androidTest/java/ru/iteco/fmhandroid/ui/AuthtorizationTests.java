@@ -8,6 +8,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -51,22 +52,23 @@ public class AuthtorizationTests {
         MainPage.loadMainPage();
     }
 
-//    @Test
-//    public void testCase6WrongPass()  {
-//        AuthPage.loadAuthPage();
-//        AuthPage.textInputCorrectLoginField();
-//        AuthPage.textInputInCorrectPassField();
-//        AuthPage.pressSignButton();
-//        AuthPage.checkWrongLoginPass();
-//    }
+    @Test
+    public void testCase6WrongPass()  {
+        AuthPage.loadAuthPage();
+        AuthPage.textInputCorrectLoginField();
+        AuthPage.textInputInCorrectPassField();
+        AuthPage.pressSignButton();
+        AuthPage.checkWrongLoginPass();
+    }
 
-//    @Test
-//    public void testCase11LoginBottomLine() {
-//        AuthPage.loadAuthPage();
-//        AuthPage.textInputLessSymbolsLoginField();
-//        AuthPage.textInputCorrectPassField();
-//        AuthPage.checkLessSymbolsLoginPass();
-//    }
+    @Test
+    public void testCase11LoginBottomLine() {
+        AuthPage.loadAuthPage();
+        AuthPage.textInputLessSymbolsLoginField();
+        AuthPage.textInputCorrectPassField();
+        AuthPage.pressSignButton();
+        AuthPage.checkLessSymbolsLoginPass();
+    }
 
     @Test
     public void testCase14LoginUpperLine(){
@@ -92,13 +94,14 @@ public class AuthtorizationTests {
         AuthPage.textInputSpaceSymbolLoginField();
         AuthPage.checkNoSymbolsLoginField();
     }
-    //    @Test
-//    public void testCase21PassBottomLine(){
-//        AuthPage.loadAuthPage();
-//        AuthPage.textInputCorrectLoginField();
-//        AuthPage.textInputLessSymbolsPassField();
-//        check?
-//    }
+        @Test
+    public void testCase21PassBottomLine(){
+        AuthPage.loadAuthPage();
+        AuthPage.textInputCorrectLoginField();
+        AuthPage.textInputLessSymbolsPassField();
+        AuthPage.pressSignButton();
+        AuthPage.checkLessSymbolsLoginPass();
+    }
     @Test
     public void testCase24PassUpperLine(){
         AuthPage.loadAuthPage();

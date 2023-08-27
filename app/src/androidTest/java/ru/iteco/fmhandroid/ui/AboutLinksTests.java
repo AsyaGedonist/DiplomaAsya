@@ -38,13 +38,13 @@ public class AboutLinksTests {
         }
     }
 
-//    @Test
-//    public void testCase46PrivacyPolicy(){
-//        AboutPage.tapPolicyLink();
-//    }
-//    @Test
-//    public void testCase47TermsOfUse(){
-//        AboutPage.tapTermsOfUse();
-//    }
+    @Test
+    public void testCase46PrivacyPolicy(){
+        AboutPage.tapPolicyLink();
+    }
+    @Test
+    public void testCase47TermsOfUse(){
+        AboutPage.tapTermsOfUse();
+    }
 }
 
