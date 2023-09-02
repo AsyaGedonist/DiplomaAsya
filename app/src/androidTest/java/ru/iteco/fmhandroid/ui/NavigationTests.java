@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import ru.iteco.fmhandroid.pages.AboutPage;
 import ru.iteco.fmhandroid.pages.AuthPage;
 import ru.iteco.fmhandroid.pages.ClaimPage;
@@ -20,7 +21,7 @@ import ru.iteco.fmhandroid.pages.TapBarPage;
 import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class NavigationTests {
 
     @Rule

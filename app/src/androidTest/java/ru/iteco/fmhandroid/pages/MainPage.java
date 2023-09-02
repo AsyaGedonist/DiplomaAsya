@@ -14,6 +14,7 @@ import static ru.iteco.fmhandroid.data.Utils.waitDisplayed;
 
 import android.annotation.SuppressLint;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 
 public class MainPage {
@@ -23,19 +24,22 @@ public class MainPage {
     public static int newClaim = R.id.add_new_claim_material_button;
 
     public static void loadMainPage() {
+        Allure.step("Загрузка главной страницы");
         onView(isRoot()).perform(waitDisplayed(mainImage, 5000));
     }
 
     public static void addNewClaim(){
+        Allure.step("Добавление новой жалобы с главной страницы");
         onView(withId(newClaim)).perform(click());
     }
-    public static void addNewClaimWithPosition(){
-        onView(allOf(childAtPosition(
-                childAtPosition(withId(claimContainer),0), 2)))
-                    .perform(click());
-    }
+//    public static void addNewClaimWithPosition(){
+//        onView(allOf(childAtPosition(
+//                childAtPosition(withId(claimContainer),0), 2)))
+//                    .perform(click());
+//    }
 
     public static void addNewsWithPosition(){
+        Allure.step("Добавление новой новости с главной страницы");
         onView(allOf(childAtPosition(
                 childAtPosition(withId(newsContainer),0), 2)))
                 .perform(click());

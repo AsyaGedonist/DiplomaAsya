@@ -13,6 +13,7 @@ import static ru.iteco.fmhandroid.data.Utils.childAtPosition;
 
 import androidx.test.espresso.ViewInteraction;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.data.Utils;
 
@@ -25,20 +26,14 @@ public class EditNewsPage {
     private static int addNewsButton = R.id.add_news_image_view;
 
     public static void loadEditNewsPage() {
+        Allure.step("Загрузка страницы Редактивания Новостей");
         onView(isRoot()).perform(Utils.waitDisplayed(newsContainer, 5000));
     }
 
     public static void addNews(){
+        Allure.step("Добавить новость");
         onView(withId(addNewsButton)).perform(click());
     }
-//    public static void checkNameOfFirst() {
-////        ViewInteraction textView = onView(
-////                allOf(withId(R.id.news_item_title_text_view),
-////                        withParent(withParent(
-////                                childAtPosition(
-////                                    withId(R.id.news_list_recycler_view),
-////                                        0)))));
-////        textView.check(matches(withText("Объявление22208")));
-//    }
+
 
 }

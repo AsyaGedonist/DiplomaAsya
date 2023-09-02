@@ -41,6 +41,7 @@ import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Rule;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.data.Data;
 import ru.iteco.fmhandroid.data.Utils;
@@ -68,39 +69,46 @@ public class AuthPage {
         });
     }
     public static void loadAuthPage() {
+        Allure.step("Загрузка страницы Авторизации");
         onView(isRoot()).perform(Utils.waitDisplayed(loginField, 5000));
     }
 
     public static void checkWrongLoginPass(){
+        Allure.step("Проверка сообщения об ошибке - некорректный логин или пароль");
         onView(withText(wrongPassOrLogin))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
     }
     public static void checkLessSymbolsLoginPass(){
+        Allure.step("Проверка сообщения об ошибке - недостаточное количество символов");
         onView(withText(lessSymbols))
                 .inRoot(withDecorView(Matchers.not(decorView)))
                 .check(matches(isDisplayed()));
     }
 
     public static void checkSymbolsUpperLineLoginField(){
+        Allure.step("Проверка верхней границы поля Логин");
         ViewInteraction editText = onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
                         0), 0)));
         editText.check(matches(withText("12345678901234567890123456789012")));
     }
     public static void checkSymbolsUpperLinePassField(){
+        Allure.step("Проверка верхней границы поля Пароль");
         ViewInteraction editText = onView(
                 allOf(childAtPosition(childAtPosition(withId(passField),
                         0), 0)));
         editText.check(matches(withText("12345678901234567890123456789012")));
     }
     public static void checkNoSymbolsLoginField(){
+        Allure.step("Проверка отсутсвия символов в поле");
         ViewInteraction editText = onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
                         0), 0)));
         editText.check(matches(withText("")));
     }
     public static void textInputCorrectBothAuth(){
+        Allure.step("Ввод корректных данных для авторизации");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -113,9 +121,11 @@ public class AuthPage {
                 .perform(replaceText(Data.correctUser().getPassword()), closeSoftKeyboard());
     }
     public static void pressSignButton(){
+        Allure.step("Нажать кнопку входа");
         onView(withId(signButton)).perform(click());
     }
     public static void textInputCorrectLoginField(){
+        Allure.step("Ввод корректного логина");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -123,6 +133,7 @@ public class AuthPage {
                 .perform(replaceText(Data.correctUser().getLogin()), closeSoftKeyboard());
     }
     public static void textInputCorrectPassField(){
+        Allure.step("Ввод корректного пароля");
         onView(withId(passField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(passField),
@@ -130,6 +141,7 @@ public class AuthPage {
                 .perform(replaceText(Data.correctUser().getPassword()), closeSoftKeyboard());
     }
     public static void textInputInCorrectPassField(){
+        Allure.step("Ввод некорректного пароля");
         onView(withId(passField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(passField),
@@ -137,6 +149,7 @@ public class AuthPage {
                 .perform(replaceText(Data.inCorrectUser().getPassword()), closeSoftKeyboard());
     }
     public static void textInputLessSymbolsLoginField(){
+        Allure.step("Ввод недостаточного количества символов в поле логин");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -144,6 +157,7 @@ public class AuthPage {
                 .perform(replaceText(Data.bottomLineUser().getLogin()), closeSoftKeyboard());
     }
     public static void textInputLessSymbolsPassField(){
+        Allure.step("Ввод недостаточного количества символов в поле пароль");
         onView(withId(passField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(passField),
@@ -151,6 +165,7 @@ public class AuthPage {
                 .perform(replaceText(Data.bottomLineUser().getPassword()), closeSoftKeyboard());
     }
     public static void textInputMoreSymbolsLoginField(){
+        Allure.step("Ввод большего количества символов в поле логин");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -158,6 +173,7 @@ public class AuthPage {
                 .perform(replaceText(Data.upperLineUser().getLogin()), closeSoftKeyboard());
     }
     public static void textInputMoreSymbolsPassField(){
+        Allure.step("Ввод большего количества символов в поле пароль");
         onView(withId(passField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(passField),
@@ -165,6 +181,7 @@ public class AuthPage {
                 .perform(replaceText(Data.upperLineUser().getPassword()), closeSoftKeyboard());
     }
     public static void textInputRusSymbolsLoginField(){
+        Allure.step("Ввод символов кириллицы");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -172,6 +189,7 @@ public class AuthPage {
                 .perform(replaceText(Data.badLogin().getRusSymbols()), closeSoftKeyboard());
     }
     public static void textInputSpecSymbolsLoginField(){
+        Allure.step("Ввод спец символов");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),
@@ -179,6 +197,7 @@ public class AuthPage {
                 .perform(replaceText(Data.badLogin().getSpecSymbols()), closeSoftKeyboard());
     }
     public static void textInputSpaceSymbolLoginField(){
+        Allure.step("Ввод символа пробела");
         onView(withId(loginField)).perform(click());
         onView(
                 allOf(childAtPosition(childAtPosition(withId(loginField),

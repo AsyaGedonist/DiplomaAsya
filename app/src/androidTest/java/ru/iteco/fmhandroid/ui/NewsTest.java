@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import ru.iteco.fmhandroid.pages.AuthPage;
 import ru.iteco.fmhandroid.pages.ClaimPage;
 import ru.iteco.fmhandroid.pages.EditNewsPage;
@@ -19,7 +20,7 @@ import ru.iteco.fmhandroid.pages.NewsPage;
 import ru.iteco.fmhandroid.pages.TapBarPage;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class NewsTest {
 
     @Rule
@@ -50,19 +51,24 @@ public class NewsTest {
         NewNewsPage.loadNewNewsPage();
         NewNewsPage.checkNewsName();
     }
-//    @Test
-//    public void testCase55AddNewsPositive() throws InterruptedException {
-//        NewsPage.editNews();
-//        EditNewsPage.loadEditNewsPage();
-//        EditNewsPage.addNews();
-//        NewNewsPage.loadNewNewsPage();
-//        NewNewsPage.chooseCategory();
-//        NewNewsPage.nameNews();
-//        NewNewsPage.nowDate();
-//        NewNewsPage.nowTime();
-//        NewNewsPage.descriptionNews();
-//        NewNewsPage.saveNews();
-//        EditNewsPage.loadEditNewsPage();
-//        EditNewsPage.checkNameOfFirst();
-//    }
+    @Test
+    public void testCase60AddNewsPositive() {
+        NewsPage.editNews();
+        EditNewsPage.loadEditNewsPage();
+        EditNewsPage.addNews();
+        NewNewsPage.loadNewNewsPage();
+        NewNewsPage.chooseCategory();
+        NewNewsPage.nameNews();
+        NewNewsPage.nowDate();
+        NewNewsPage.nowTime();
+        NewNewsPage.descriptionNews();
+        NewNewsPage.saveNews();
+        EditNewsPage.loadEditNewsPage();
+        TapBarPage.tapBar();
+        TapBarPage.tapNews();
+        NewsPage.openFirstNews();
+        NewsPage.loadDescription();
+        NewsPage.checkDescription();
+    }
+
 }

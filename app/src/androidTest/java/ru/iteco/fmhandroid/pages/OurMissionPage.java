@@ -9,6 +9,7 @@ import static ru.iteco.fmhandroid.data.Utils.childAtPosition;
 
 import androidx.test.espresso.ViewInteraction;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.data.Utils;
 
@@ -16,10 +17,12 @@ public class OurMissionPage {
     private static int missionText = R.id.our_mission_title_text_view;
 
     public static void loadMissionPage() {
+        Allure.step("Загрузка страницы Цитат");
         onView(isRoot()).perform(Utils.waitDisplayed(missionText, 5000));
     }
 
     public static void checkMissionName(){
+        Allure.step("Проверка загрузки страницы цитат");
 //        ViewInteraction textView = onView(childAtPosition(
 //                childAtPosition(
 //                        withId(claimContainer),

@@ -16,6 +16,7 @@ import android.annotation.SuppressLint;
 
 import androidx.test.espresso.ViewInteraction;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.data.Utils;
 
@@ -25,10 +26,12 @@ public class ClaimPage {
     private static int addNewClaim = R.id.add_new_claim_material_button;
 
     public static void loadClaimPage() {
+        Allure.step("Загрузка страницы Претензий");
         onView(isRoot()).perform(Utils.waitDisplayed(claimContainer, 5000));
     }
 
     public static void checkClaimsPage(){
+        Allure.step("Проверка загрузку страницы Претензий");
         ViewInteraction textView = onView(childAtPosition(
                 childAtPosition(
                         withId(claimContainer),
@@ -38,6 +41,7 @@ public class ClaimPage {
     }
 
     public static void addNewClaim(){
+        Allure.step("Добавление новой жалобы");
         onView(withId(addNewClaim)).perform(click());
     }
 
